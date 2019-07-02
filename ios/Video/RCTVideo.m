@@ -367,6 +367,9 @@ static int const RCTVideoUnset = -1;
       }
         
       _player = [AVPlayer playerWithPlayerItem:_playerItem];
+      if (@available(iOS 10, *)) {
+	 _player.automaticallyWaitsToMinimizeStalling = NO;
+      }
       _player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
         
       [_player addObserver:self forKeyPath:playbackRate options:0 context:nil];
